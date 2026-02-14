@@ -26,9 +26,13 @@ Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux syst
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/sentinel-ai.git
+   git clone https://github.com/Bangkah/sentinel-ai.git
    cd sentinel-ai
    ```
+1. Clone this repository:
+  ```bash
+  git clone https://github.com/Bangkah/sentinel.git
+  cd sentinel
 2. Install dependencies:
   ```bash
   pip install psutil colorama autopep8
