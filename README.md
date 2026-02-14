@@ -1,8 +1,12 @@
+
 # Sentinel AI CLI
 
-Sentinel AI CLI is a professional, open-source cybersecurity CLI tool for Linux systems. It provides real-time network monitoring, system information, intelligent connection analysis, and risk classification to help you secure your machine.
+![PyPI](https://img.shields.io/pypi/v/sentinel-ai-cli?color=blue) ![Python](https://img.shields.io/pypi/pyversions/sentinel-ai-cli) ![License](https://img.shields.io/github/license/Bangkah/sentinel-ai-cli) ![Open Source](https://badgen.net/badge/open-source/yes/green)
+
+Sentinel AI CLI is a professional, open-source cybersecurity tool for Linux. It provides real-time network monitoring, system information, intelligent connection analysis, and risk classification to help you secure your machine—instantly from your terminal.
 
 ---
+
 
 
 
@@ -22,24 +26,31 @@ Sentinel AI CLI is a professional, open-source cybersecurity CLI tool for Linux 
 
 ---
 
+
 ## Installation
 
-1. Install from PyPI:
-  ```bash
-  pip install sentinel-ai-cli
-  ```
-2. Or clone this repository:
-  ```bash
-  git clone https://github.com/Bangkah/sentinel.git
-  cd sentinel
-  pip install -r requirements.txt
-  ```
-3. Run Sentinel AI CLI:
-  ```bash
-  sentinel-ai --help
-  ```
+### From PyPI (recommended)
+```bash
+pip install sentinel-ai-cli
+```
+
+### From source
+```bash
+git clone https://github.com/Bangkah/sentinel.git
+cd sentinel
+pip install -r requirements.txt
+```
+
+### Requirements
+- Python 3.7+
+- psutil
+- colorama
+- autopep8
 
 ---
+
+---
+
 
 
 
@@ -53,21 +64,21 @@ Sentinel AI CLI is a professional, open-source cybersecurity CLI tool for Linux 
   ```bash
   sentinel-ai system
   ```
-- **Analyze connections and classify risk (with numeric score):**
+- **Analyze connections and classify risk:**
   ```bash
   sentinel-ai analyze
   ```
-  Output example:
+  Example output:
   ```
-  Proto  Local Address         Remote Address        PID     Process              Risk            Reason
-  TCP    192.168.1.10:54321   8.8.8.8:53            1234    python3              HIGH (87/100)   External IP connection; Unusual port 53; Unknown process: python3
+  Proto  Local Address         Remote Address        PID     Process    Risk        Reason
+  TCP    192.168.1.10:54321   8.8.8.8:53            1234    python3    HIGH (87)  External IP; Unusual port; Unknown process
   ...
   ```
 - **Show summary report:**
   ```bash
   sentinel-ai report
   ```
-  Output example:
+  Example output:
   ```
   === Sentinel AI CLI Security Report ===
   Total connections: 12
@@ -79,22 +90,25 @@ Sentinel AI CLI is a professional, open-source cybersecurity CLI tool for Linux 
   ```
 - **Explain a specific IP address:**
   ```bash
-  python3 sentinel_ai.py explain 8.8.8.8
+  sentinel-ai explain 8.8.8.8
   ```
 - **Debug a Python file:**
   ```bash
-  python3 sentinel_ai.py debug path/to/your_script.py
+  sentinel-ai debug path/to/your_script.py
   ```
 - **Explain a Python code file:**
   ```bash
-  python3 sentinel_ai.py explain-code path/to/your_script.py
+  sentinel-ai explain-code path/to/your_script.py
   ```
 - **Improve (auto-format) a Python code file:**
   ```bash
-  python3 sentinel_ai.py improve-code path/to/your_script.py
+  sentinel-ai improve-code path/to/your_script.py
   ```
 
 ---
+
+---
+
 
 
 ## Screenshots
@@ -102,6 +116,7 @@ Sentinel AI CLI is a professional, open-source cybersecurity CLI tool for Linux 
 ![Sentinel AI CLI Demo](screenshots/demo.png)
 
 ---
+
 
 ## How GitHub Copilot CLI Helped
 
@@ -116,12 +131,23 @@ Thanks to Copilot CLI, Sentinel AI was built faster, with higher code quality an
 
 ---
 
+
 ## Contributing
 
 Contributions are welcome! Please open issues or pull requests to help improve Sentinel AI.
 
 ---
 
+
 ## License
 
 This project is licensed under the MIT License.
+
+---
+
+## Support & Links
+
+- [PyPI Package](https://pypi.org/project/sentinel-ai-cli/)
+- [GitHub Issues](https://github.com/Bangkah/sentinel/issues)
+- [Documentation](https://github.com/Bangkah/sentinel#readme)
+- Author: [Muhammad Dhiyaul Atha](https://github.com/Bangkah)
