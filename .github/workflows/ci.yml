@@ -19,9 +19,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install autopep8
-      - name: Lint with autopep8
+          pip install .
+      - name: Auto-format (in-place, fail if changes)
         run: |
-          autopep8 --diff --exit-code sentinel_ai.py
+          autopep8 --in-place --aggressive --aggressive sentinel_ai.py
+          git diff --exit-code || (echo 'Lint error: Please run autopep8 on sentinel_ai.py' && exit 1)
 
   build:
     runs-on: ubuntu-latest
@@ -35,6 +37,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install build
+          pip install .
       - name: Build package
         run: |
           python -m build .
@@ -50,7 +53,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt pytest
+          pip install pytest
+          pip install .
       - name: Run tests
         run: |
           pytest
