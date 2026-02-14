@@ -149,11 +149,11 @@ def scan_connections():
         if not conns:
             print_warning("No active network connections found.")
             return
-        print(
-            f"{
-                'Proto':<6} {
-                'Local Address':<22} {
-                'Remote Address':<22} {
+            print(
+                f"{
+                    'Proto':<6} {
+                    'Local Address':<22} {
+                    'Remote Address':<22} {
                     'Status':<13} {
                         'PID':<7} {
                             'Process':<20}")
@@ -197,11 +197,11 @@ def analyze_connections():
         if not conns:
             print_warning("No active network connections found.")
             return
-        print(
-            f"{
-                'Proto':<6} {
-                'Local Address':<22} {
-                'Remote Address':<22} {
+            print(
+                f"{
+                    'Proto':<6} {
+                    'Local Address':<22} {
+                    'Remote Address':<22} {
                     'PID':<7} {
                         'Process':<20} {
                             'Risk':<16} {'Reason'}")
