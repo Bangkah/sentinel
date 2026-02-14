@@ -1,7 +1,7 @@
 
 # Sentinel AI CLI
 
-![PyPI](https://img.shields.io/pypi/v/sentinel-ai-cli?color=blue) ![Python](https://img.shields.io/pypi/pyversions/sentinel-ai-cli) ![License](https://img.shields.io/github/license/Bangkah/sentinel-ai-cli) ![Open Source](https://badgen.net/badge/open-source/yes/green)
+![PyPI](https://img.shields.io/pypi/v/sentinel-ai-cli?color=blue) ![Python](https://img.shields.io/pypi/pyversions/sentinel-ai-cli) ![License](https://img.shields.io/github/license/Bangkah/sentinel) ![Open Source](https://badgen.net/badge/open-source/yes/green)
 
 Sentinel AI CLI is a professional, open-source cybersecurity tool for Linux. It provides real-time network monitoring, system information, intelligent connection analysis, and risk classification to help you secure your machine—instantly from your terminal.
 
