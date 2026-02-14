@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="sentinel-ai-cli",
     version="1.0.0",
-    description="Professional Linux Cybersecurity CLI Tool: network scanner, risk analyzer, system info, and more.",
+        description="Professional Python Cybersecurity CLI Tool (Sentinel AI CLI)",
     author="Muhammad Dhiyaul Atha",
     author_email="mdhyaulatha@gmail.com",
     url="https://github.com/Bangkah/sentinel",
@@ -16,7 +16,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "sentinel-ai=sentinel_ai:main"
+                "sentinel-ai=sentinel_ai:main",
         ]
     },
     classifiers=[

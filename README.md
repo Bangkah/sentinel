@@ -1,6 +1,6 @@
-# Sentinel AI
+# Sentinel AI CLI
 
-Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux systems. It provides real-time network monitoring, system information, intelligent connection analysis, and risk classification to help you secure your machine.
+Sentinel AI CLI is a professional, open-source cybersecurity CLI tool for Linux systems. It provides real-time network monitoring, system information, intelligent connection analysis, and risk classification to help you secure your machine.
 
 ---
 
@@ -24,23 +24,20 @@ Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux syst
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Bangkah/sentinel-ai.git
-   cd sentinel-ai
-   ```
-1. Clone this repository:
+1. Install from PyPI:
+  ```bash
+  pip install sentinel-ai-cli
+  ```
+2. Or clone this repository:
   ```bash
   git clone https://github.com/Bangkah/sentinel.git
   cd sentinel
-2. Install dependencies:
-  ```bash
-  pip install psutil colorama autopep8
+  pip install -r requirements.txt
   ```
-3. Run Sentinel AI:
-   ```bash
-   python3 sentinel_ai.py --help
-   ```
+3. Run Sentinel AI CLI:
+  ```bash
+  sentinel-ai --help
+  ```
 
 ---
 
@@ -50,15 +47,15 @@ Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux syst
 
 - **Scan active network connections:**
   ```bash
-  python3 sentinel_ai.py scan
+  sentinel-ai scan
   ```
 - **Show system information:**
   ```bash
-  python3 sentinel_ai.py system
+  sentinel-ai system
   ```
 - **Analyze connections and classify risk (with numeric score):**
   ```bash
-  python3 sentinel_ai.py analyze
+  sentinel-ai analyze
   ```
   Output example:
   ```
@@ -68,11 +65,11 @@ Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux syst
   ```
 - **Show summary report:**
   ```bash
-  python3 sentinel_ai.py report
+  sentinel-ai report
   ```
   Output example:
   ```
-  === Sentinel AI Security Report ===
+  === Sentinel AI CLI Security Report ===
   Total connections: 12
   External connections: 3
   High risk: 1
@@ -103,8 +100,6 @@ Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux syst
 ## Screenshots
 
 ![Sentinel AI CLI Demo](screenshots/demo.png)
-
-*Add more screenshots here to showcase Sentinel AI in action.*
 
 ---
 
