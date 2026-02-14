@@ -49,8 +49,8 @@ def report_summary():
         print(f"High risk: {risk_counts['HIGH']}")
         print(f"Medium risk: {risk_counts['MEDIUM']}")
         print(f"Low risk: {risk_counts['LOW']}")
-        overall_text = f"Overall system risk: {
-            color_risk(overall_risk)} ({overall_score}/100)"
+        risk_colored = color_risk(overall_risk)
+        overall_text = "Overall system risk: {} ({}/100)".format(risk_colored, overall_score)
         print(overall_text)
 
     except Exception as e:
