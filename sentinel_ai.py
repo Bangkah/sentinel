@@ -52,6 +52,7 @@ def report_summary():
         print(
             f"Overall system risk: {
                 color_risk(overall_risk)} ({overall_score}/100)")
+
     except Exception as e:
         print_error(f"Failed to generate report: {e}")
         logging.exception("Error in report_summary")
