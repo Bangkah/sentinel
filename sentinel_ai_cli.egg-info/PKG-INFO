@@ -1,0 +1,161 @@
+Metadata-Version: 2.4
+Name: sentinel-ai-cli
+Version: 1.0.0
+Summary: Professional Linux Cybersecurity CLI Tool: network scanner, risk analyzer, system info, and more.
+Home-page: https://github.com/Bangkah/sentinel
+Author: Muhammad Dhiyaul Atha
+Author-email: mdhyaulatha@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Topic :: Security
+Classifier: Topic :: System :: Networking :: Monitoring
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: psutil
+Requires-Dist: colorama
+Requires-Dist: autopep8
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Sentinel AI
+
+Sentinel AI is a professional, open-source cybersecurity CLI tool for Linux systems. It provides real-time network monitoring, system information, intelligent connection analysis, and risk classification to help you secure your machine.
+
+---
+
+
+
+## Features
+
+- **Network Scanner**: List all active network connections with process details
+- **System Information**: Display OS, kernel, CPU, memory, and hostname
+- **Connection Analyzer**: Detect and classify suspicious connections with numeric risk scoring (0–100) and risk level (LOW, MEDIUM, HIGH)
+- **Report Command**: Show summary of total connections, external connections, risk counts, and overall system risk score
+- **Explain Command**: Explain if an IP/connection is potentially dangerous
+- **Debug**: Run and debug a Python file, catching exceptions and logging errors
+- **Explain Code**: Summarize and list functions/classes in a Python file
+- **Improve Code**: Auto-format a Python file using autopep8 for better readability
+- **Colored Output**: Professional, readable CLI with colorama
+- **Logging**: All actions and errors are logged for auditing
+- **Production-Ready**: Modular, clean, and robust code
+
+---
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/sentinel-ai.git
+   cd sentinel-ai
+   ```
+2. Install dependencies:
+  ```bash
+  pip install psutil colorama autopep8
+  ```
+3. Run Sentinel AI:
+   ```bash
+   python3 sentinel_ai.py --help
+   ```
+
+---
+
+
+
+## Usage Examples
+
+- **Scan active network connections:**
+  ```bash
+  python3 sentinel_ai.py scan
+  ```
+- **Show system information:**
+  ```bash
+  python3 sentinel_ai.py system
+  ```
+- **Analyze connections and classify risk (with numeric score):**
+  ```bash
+  python3 sentinel_ai.py analyze
+  ```
+  Output example:
+  ```
+  Proto  Local Address         Remote Address        PID     Process              Risk            Reason
+  TCP    192.168.1.10:54321   8.8.8.8:53            1234    python3              HIGH (87/100)   External IP connection; Unusual port 53; Unknown process: python3
+  ...
+  ```
+- **Show summary report:**
+  ```bash
+  python3 sentinel_ai.py report
+  ```
+  Output example:
+  ```
+  === Sentinel AI Security Report ===
+  Total connections: 12
+  External connections: 3
+  High risk: 1
+  Medium risk: 2
+  Low risk: 9
+  Overall system risk: HIGH (72/100)
+  ```
+- **Explain a specific IP address:**
+  ```bash
+  python3 sentinel_ai.py explain 8.8.8.8
+  ```
+- **Debug a Python file:**
+  ```bash
+  python3 sentinel_ai.py debug path/to/your_script.py
+  ```
+- **Explain a Python code file:**
+  ```bash
+  python3 sentinel_ai.py explain-code path/to/your_script.py
+  ```
+- **Improve (auto-format) a Python code file:**
+  ```bash
+  python3 sentinel_ai.py improve-code path/to/your_script.py
+  ```
+
+---
+
+
+## Screenshots
+
+![Sentinel AI CLI Demo](screenshots/demo.png)
+
+*Add more screenshots here to showcase Sentinel AI in action.*
+
+---
+
+## How GitHub Copilot CLI Helped
+
+GitHub Copilot CLI accelerated the development of Sentinel AI by:
+- Generating modular, production-ready Python code
+- Suggesting robust error handling and logging patterns
+- Providing intelligent CLI argument parsing with argparse
+- Recommending best practices for security and code structure
+- Speeding up the implementation of colored output and risk analysis logic
+
+Thanks to Copilot CLI, Sentinel AI was built faster, with higher code quality and maintainability.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please open issues or pull requests to help improve Sentinel AI.
+
+---
+
+## License
+
+This project is licensed under the MIT License.

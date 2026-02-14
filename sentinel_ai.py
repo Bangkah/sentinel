@@ -1,5 +1,5 @@
 def banner():
-    print(Fore.CYAN + Style.BRIGHT + """
+    print(Fore.CYAN + Style.BRIGHT + r"""
    _____            _   _ _       _    _    ___ 
   / ____|          | | (_) |     | |  | |  |__ \
  | (___   ___ _ __ | |_ _| | __ _| |  | |     ) |
@@ -7,6 +7,7 @@ def banner():
   ____) |  __/ | | | |_| | | (_| | |__| |   / /_
  |_____/ \___|_| |_|\__|_|_|\__,_|\____/   |____|
     Sentinel AI - Cybersecurity CLI
+          by Muhammad Dhiyaul Atha
 """ + Style.RESET_ALL)
 def report_summary():
     """
