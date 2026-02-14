@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sentinel-ai-cli",
-    version="1.0.0",
+    version="1.0.3",
         description="Professional Python Cybersecurity CLI Tool (Sentinel AI CLI)",
     author="Muhammad Dhiyaul Atha",
     author_email="mdhyaulatha@gmail.com",
