@@ -197,14 +197,15 @@ def analyze_connections():
             risk, score, reason = classify_risk(c)
             risk_str = f"{risk} ({score}/100)"
             print(
-                f"{
-                    proto:<6} {
-                    laddr:<22} {
-                    raddr:<22} {
-                    str(
-                        c.pid):<7} {
-                            pname:<20} {
-                                color_risk(risk_str):<16} {reason}")
+                f"{proto:<6}"
+                f"{laddr:<22}"
+                f"{raddr:<22}"
+                f"{str(c.pid):<7}"
+                f"{pname:<20}"
+                f"{color_risk(risk_str):<16}"
+                f"{reason}"
+            )
+
     except Exception as e:
         print_error(f"Failed to analyze connections: {e}")
         logging.exception("Error in analyze_connections")
