@@ -149,14 +149,7 @@ def scan_connections():
         if not conns:
             print_warning("No active network connections found.")
             return
-        print(
-            f"{
-                'Proto':<6} {
-                'Local Address':<22} {
-                'Remote Address':<22} {
-                    'Status':<13} {
-                        'PID':<7} {
-                            'Process':<20}")
+            print(f"{'Proto':<6} {'Local Address':<22} {'Remote Address':<22} {'Status':<13} {'PID':<7} {'Process':<20}")
         for c in conns:
             laddr = f"{c.laddr.ip}:{c.laddr.port}" if c.laddr else ""
             raddr = f"{c.raddr.ip}:{c.raddr.port}" if c.raddr else ""
@@ -197,14 +190,7 @@ def analyze_connections():
         if not conns:
             print_warning("No active network connections found.")
             return
-        print(
-            f"{
-                'Proto':<6} {
-                'Local Address':<22} {
-                'Remote Address':<22} {
-                    'PID':<7} {
-                        'Process':<20} {
-                            'Risk':<16} {'Reason'}")
+            print(f"{'Proto':<6} {'Local Address':<22} {'Remote Address':<22} {'PID':<7} {'Process':<20} {'Risk':<16} {'Reason'}")
         for c in conns:
             laddr = f"{c.laddr.ip}:{c.laddr.port}" if c.laddr else ""
             raddr = f"{c.raddr.ip}:{c.raddr.port}" if c.raddr else ""
@@ -212,15 +198,7 @@ def analyze_connections():
             proto = "TCP" if c.type == socket.SOCK_STREAM else "UDP"
             risk, score, reason = classify_risk(c)
             risk_str = f"{risk} ({score}/100)"
-            print(
-                f"{
-                    proto:<6} {
-                    laddr:<22} {
-                    raddr:<22} {
-                    str(
-                        c.pid):<7} {
-                            pname:<20} {
-                                color_risk(risk_str):<16} {reason}")
+                print(f"{proto:<6} {laddr:<22} {raddr:<22} {str(c.pid):<7} {pname:<20} {color_risk(risk_str):<16} {reason}")
     except Exception as e:
         print_error(f"Failed to analyze connections: {e}")
         logging.exception("Error in analyze_connections")
