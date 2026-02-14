@@ -1,71 +1,92 @@
-# Byte-compiled / optimized / DLL files
+# ============================================
+# Python bytecode
+# ============================================
 __pycache__/
 *.py[cod]
 *$py.class
 
+# ============================================
 # Distribution / packaging
+# ============================================
 .Python
-env/
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
 *.egg-info/
-.installed.cfg
+.eggs/
 *.egg
+MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# ============================================
+# Virtual environments
+# ============================================
+env/
+venv/
+.venv/
+ENV/
 
+# ============================================
 # Installer logs
-debug.log
+# ============================================
 pip-log.txt
 pip-delete-this-directory.txt
+debug.log
 
-# Unit test / coverage reports
+# ============================================
+# Unit test / coverage
+# ============================================
 htmlcov/
 .tox/
 .nox/
 .coverage
 .coverage.*
 .cache
+.pytest_cache/
 nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-.pytest_cache/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# mypy
+# ============================================
+# Type checker
+# ============================================
 .mypy_cache/
 .dmypy.json
 
-# VS Code
+# ============================================
+# Jupyter Notebook
+# ============================================
+.ipynb_checkpoints/
+
+# ============================================
+# IDE / Editor
+# ============================================
 .vscode/
-
-# macOS
-.DS_Store
-
-# PyCharm
 .idea/
 
-# Local env
-venv/
+# ============================================
+# OS files
+# ============================================
+.DS_Store
+Thumbs.db
 
+# ============================================
+# Logs (IMPORTANT for Sentinel AI CLI)
+# ============================================
+*.log
+sentinel_ai.log
+
+# ============================================
 # GitHub Actions temp
+# ============================================
 .github/.tmp/
+
+# ============================================
+# PyInstaller
+# ============================================
+*.manifest
+*.spec
+
+# ============================================
+# Misc
+# ============================================
+.python-version
