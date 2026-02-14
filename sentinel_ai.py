@@ -1,6 +1,15 @@
+from colorama import init, Fore, Style
+import sys
+import socket
+import psutil
+import platform
+import logging
+import argparse
+
+
 def banner():
     print(Fore.CYAN + Style.BRIGHT + r"""
-   _____            _   _ _       _    _    ___ 
+   _____            _   _ _       _    _    ___
   / ____|          | | (_) |     | |  | |  |__ \
  | (___   ___ _ __ | |_ _| | __ _| |  | |     ) |
   \___ \ / _ \ '_ \| __| | |/ _` | |  | |    / /
@@ -9,6 +18,8 @@ def banner():
     Sentinel AI - Cybersecurity CLI
           by Muhammad Dhiyaul Atha
 """ + Style.RESET_ALL)
+
+
 def report_summary():
     """
     Print a summary report of all connections and risk levels.
@@ -38,10 +49,14 @@ def report_summary():
         print(f"High risk: {risk_counts['HIGH']}")
         print(f"Medium risk: {risk_counts['MEDIUM']}")
         print(f"Low risk: {risk_counts['LOW']}")
-        print(f"Overall system risk: {color_risk(overall_risk)} ({overall_score}/100)")
+        print(
+            f"Overall system risk: {
+                color_risk(overall_risk)} ({overall_score}/100)")
     except Exception as e:
         print_error(f"Failed to generate report: {e}")
         logging.exception("Error in report_summary")
+
+
 #!/usr/bin/env python3
 """
 Sentinel AI - Professional Cybersecurity CLI Tool
@@ -56,13 +71,6 @@ Features:
 - Modular, clean, production-ready code
 """
 
-import argparse
-import logging
-import platform
-import psutil
-import socket
-import sys
-from colorama import init, Fore, Style
 
 # Initialize colorama
 init(autoreset=True)
@@ -76,17 +84,22 @@ logging.basicConfig(
 
 # --- Utility Functions ---
 
+
 def print_header(text):
     print(Fore.CYAN + Style.BRIGHT + f"\n=== {text} ===" + Style.RESET_ALL)
+
 
 def print_error(text):
     print(Fore.RED + Style.BRIGHT + f"[ERROR] {text}" + Style.RESET_ALL)
 
+
 def print_success(text):
     print(Fore.GREEN + Style.BRIGHT + f"[OK] {text}" + Style.RESET_ALL)
 
+
 def print_warning(text):
     print(Fore.YELLOW + Style.BRIGHT + f"[WARNING] {text}" + Style.RESET_ALL)
+
 
 def color_risk(risk):
     if risk == "HIGH":
@@ -96,22 +109,26 @@ def color_risk(risk):
     else:
         return Fore.GREEN + Style.BRIGHT + risk + Style.RESET_ALL
 
+
 def is_private_ip(ip):
     try:
         ip = ip.strip()
         if ip.startswith("127.") or ip == "localhost":
             return True
-        if ip.startswith("10.") or ip.startswith("192.168.") or ip.startswith("172."):
+        if ip.startswith("10.") or ip.startswith(
+                "192.168.") or ip.startswith("172."):
             return True
         return False
     except Exception:
         return False
+
 
 def get_hostname(ip):
     try:
         return socket.gethostbyaddr(ip)[0]
     except Exception:
         return "Unknown"
+
 
 def get_process_name(pid):
     try:
@@ -120,6 +137,7 @@ def get_process_name(pid):
         return "Unknown"
 
 # --- Feature Implementations ---
+
 
 def scan_connections():
     """
@@ -131,16 +149,25 @@ def scan_connections():
         if not conns:
             print_warning("No active network connections found.")
             return
-        print(f"{'Proto':<6} {'Local Address':<22} {'Remote Address':<22} {'Status':<13} {'PID':<7} {'Process':<20}")
+        print(
+            f"{
+                'Proto':<6} {
+                'Local Address':<22} {
+                'Remote Address':<22} {
+                    'Status':<13} {
+                        'PID':<7} {
+                            'Process':<20}")
         for c in conns:
             laddr = f"{c.laddr.ip}:{c.laddr.port}" if c.laddr else ""
             raddr = f"{c.raddr.ip}:{c.raddr.port}" if c.raddr else ""
             pname = get_process_name(c.pid) if c.pid else "N/A"
             proto = "TCP" if c.type == socket.SOCK_STREAM else "UDP"
-            print(f"{proto:<6} {laddr:<22} {raddr:<22} {c.status:<13} {str(c.pid):<7} {pname:<20}")
+            print(
+                f"{proto:<6} {laddr:<22} {raddr:<22} {c.status:<13} {str(c.pid):<7} {pname:<20}")
     except Exception as e:
         print_error(f"Failed to scan connections: {e}")
         logging.exception("Error in scan_connections")
+
 
 def system_info():
     """
@@ -159,6 +186,7 @@ def system_info():
         print_error(f"Failed to get system info: {e}")
         logging.exception("Error in system_info")
 
+
 def analyze_connections():
     """
     Analyze network connections and detect suspicious IPs/processes.
@@ -169,7 +197,14 @@ def analyze_connections():
         if not conns:
             print_warning("No active network connections found.")
             return
-        print(f"{'Proto':<6} {'Local Address':<22} {'Remote Address':<22} {'PID':<7} {'Process':<20} {'Risk':<16} {'Reason'}")
+        print(
+            f"{
+                'Proto':<6} {
+                'Local Address':<22} {
+                'Remote Address':<22} {
+                    'PID':<7} {
+                        'Process':<20} {
+                            'Risk':<16} {'Reason'}")
         for c in conns:
             laddr = f"{c.laddr.ip}:{c.laddr.port}" if c.laddr else ""
             raddr = f"{c.raddr.ip}:{c.raddr.port}" if c.raddr else ""
@@ -177,10 +212,19 @@ def analyze_connections():
             proto = "TCP" if c.type == socket.SOCK_STREAM else "UDP"
             risk, score, reason = classify_risk(c)
             risk_str = f"{risk} ({score}/100)"
-            print(f"{proto:<6} {laddr:<22} {raddr:<22} {str(c.pid):<7} {pname:<20} {color_risk(risk_str):<16} {reason}")
+            print(
+                f"{
+                    proto:<6} {
+                    laddr:<22} {
+                    raddr:<22} {
+                    str(
+                        c.pid):<7} {
+                            pname:<20} {
+                                color_risk(risk_str):<16} {reason}")
     except Exception as e:
         print_error(f"Failed to analyze connections: {e}")
         logging.exception("Error in analyze_connections")
+
 
 def classify_risk(conn):
     """
@@ -191,7 +235,15 @@ def classify_risk(conn):
         # Unusual ports
         unusual_ports = set(range(0, 1024)) - {22, 80, 443, 53, 25, 110, 143}
         # Known safe processes (can be extended)
-        known_processes = {"systemd", "sshd", "nginx", "apache2", "chrome", "firefox", "python", "python3"}
+        known_processes = {
+            "systemd",
+            "sshd",
+            "nginx",
+            "apache2",
+            "chrome",
+            "firefox",
+            "python",
+            "python3"}
         risk = "LOW"
         reasons = []
         score = 0
@@ -215,7 +267,7 @@ def classify_risk(conn):
         # If all three: +10 bonus
         if ("External IP connection" in reasons and
             any("Unusual port" in r for r in reasons) and
-            any("Unknown process" in r for r in reasons)):
+                any("Unknown process" in r for r in reasons)):
             score += 10
 
         # Clamp score to 0-100
@@ -236,6 +288,7 @@ def classify_risk(conn):
         logging.exception("Error in classify_risk")
         return "LOW", 0, "Analysis error"
 
+
 def explain_connection(ip_or_conn):
     """
     Explain if an IP or connection might be dangerous.
@@ -245,12 +298,16 @@ def explain_connection(ip_or_conn):
         # If input is an IP, check if it's private or external
         ip = ip_or_conn.strip()
         if is_private_ip(ip):
-            print_success(f"{ip} is a private/local IP address. Risk: {color_risk('LOW')}")
+            print_success(
+                f"{ip} is a private/local IP address. Risk: {color_risk('LOW')}")
             print("Private IPs are generally safe within your local network.")
         else:
-            print_warning(f"{ip} is an external IP address. Risk: {color_risk('MEDIUM')}")
+            print_warning(
+                f"{ip} is an external IP address. Risk: {
+                    color_risk('MEDIUM')}")
             print("External IPs may pose a risk if you do not recognize the connection.")
-            print("Check the process and port associated with this connection for further analysis.")
+            print(
+                "Check the process and port associated with this connection for further analysis.")
     except Exception as e:
         print_error(f"Failed to explain connection: {e}")
         logging.exception("Error in explain_connection")
@@ -270,6 +327,7 @@ def debug_code(file_path):
     except Exception as e:
         print_error(f"Exception occurred: {e}")
         logging.exception(f"Debug error in {file_path}")
+
 
 def explain_code(file_path):
     """
@@ -296,6 +354,7 @@ def explain_code(file_path):
         print_error(f"Failed to explain code: {e}")
         logging.exception(f"Explain code error in {file_path}")
 
+
 def improve_code(file_path):
     """
     Improve Python code formatting using autopep8.
@@ -310,10 +369,12 @@ def improve_code(file_path):
             f.write(improved)
         print_success(f"Code in {file_path} improved and formatted.")
     except ImportError:
-        print_error("autopep8 is not installed. Install with: pip install autopep8")
+        print_error(
+            "autopep8 is not installed. Install with: pip install autopep8")
     except Exception as e:
         print_error(f"Failed to improve code: {e}")
         logging.exception(f"Improve code error in {file_path}")
+
 
 def main():
     banner()
@@ -323,32 +384,42 @@ def main():
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # scan command
-    scan_parser = subparsers.add_parser("scan", help="Show active network connections")
+    scan_parser = subparsers.add_parser(
+        "scan", help="Show active network connections")
 
     # system command
-    system_parser = subparsers.add_parser("system", help="Display system information")
+    system_parser = subparsers.add_parser(
+        "system", help="Display system information")
 
     # analyze command
-    analyze_parser = subparsers.add_parser("analyze", help="Analyze connections and detect suspicious activity")
+    analyze_parser = subparsers.add_parser(
+        "analyze", help="Analyze connections and detect suspicious activity")
 
     # explain command
-    explain_parser = subparsers.add_parser("explain", help="Explain if an IP/connection is dangerous")
+    explain_parser = subparsers.add_parser(
+        "explain", help="Explain if an IP/connection is dangerous")
     explain_parser.add_argument("ip", help="IP address to explain")
 
     # debug command
-    debug_parser = subparsers.add_parser("debug", help="Debug a Python file (run and catch exceptions)")
+    debug_parser = subparsers.add_parser(
+        "debug", help="Debug a Python file (run and catch exceptions)")
     debug_parser.add_argument("file", help="Path to Python file to debug")
 
     # explain-code command
-    explain_code_parser = subparsers.add_parser("explain-code", help="Explain a Python code file")
-    explain_code_parser.add_argument("file", help="Path to Python file to explain")
+    explain_code_parser = subparsers.add_parser(
+        "explain-code", help="Explain a Python code file")
+    explain_code_parser.add_argument(
+        "file", help="Path to Python file to explain")
 
     # improve-code command
-    improve_code_parser = subparsers.add_parser("improve-code", help="Auto-format a Python code file")
-    improve_code_parser.add_argument("file", help="Path to Python file to improve")
+    improve_code_parser = subparsers.add_parser(
+        "improve-code", help="Auto-format a Python code file")
+    improve_code_parser.add_argument(
+        "file", help="Path to Python file to improve")
 
     # report command
-    report_parser = subparsers.add_parser("report", help="Show summary report of system network risk")
+    report_parser = subparsers.add_parser(
+        "report", help="Show summary report of system network risk")
 
     args = parser.parse_args()
 
@@ -378,6 +449,7 @@ def main():
         print_error(f"Unexpected error: {e}")
         logging.exception("Fatal error in main")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
